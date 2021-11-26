@@ -5,7 +5,7 @@ export class TodoRoutes {
     private todoController = new TodoController();
 
     public route(app: Application) {
-        app.get('/todo', (req: Request, res: Response) => {
+        app.get('/todos', (req: Request, res: Response) => {
             this.todoController.createNewTodo(req, res);
         });
     }

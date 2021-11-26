@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "build": "tsc",
-    "start": "nodemon ./dist/server.js",
+    "start": "node ./dist/server.js",
     "dev": "tsnd --respawn ./lib/server.ts"
   },
   "dependencies": {
