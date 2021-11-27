@@ -5,16 +5,13 @@ import { Upload } from './middleware/file-upload.middleware';
 import { CommonController } from './controllers/common.controller';
 
 const FileUploader = Upload().single('file');
+
 export class CommonRoutes {
     private commonController = new CommonController();
 
     public route(app: Application) {
         app.get('/', (req: Request, res: Response) => {
             res.send(`Hello from ${process.env.EXPRESS_APP_NAME}`);
-        });
-
-        app.all('*', (req, res) => {
-            notFoundErrorResponse(res, undefined, ERROR_MESSAGES.INVALID_URL);
         });
 
         // upload files
@@ -30,6 +27,10 @@ export class CommonRoutes {
         // delete file
         app.delete('/files/:file_name', (req: Request, res: Response) => {
             this.commonController.deleteFile(req, res);
+        });
+
+        app.all('*', (req, res) => {
+            notFoundErrorResponse(res, undefined, ERROR_MESSAGES.INVALID_URL);
         });
     }
 }
